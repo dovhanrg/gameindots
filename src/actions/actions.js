@@ -29,7 +29,7 @@ export const setPlayerName = name => {
   
   return {
     type: SET_PLAYER_NAME,
-    player: name
+    name
   }
 
 }

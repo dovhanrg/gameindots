@@ -4,32 +4,29 @@ import { connect } from 'react-redux';
 import { setPlayerName } from '../actions'
 
 import Select from './Select';
-import Input from './Input';
 
 const FormControl = ({ getName }) => {
 
-  const inputValue = React.createRef();
+  let textInput = React.createRef();
 
   const submithName = (e) => {
-    
+
     e.preventDefault();
-    getName(inputValue);
-    console.log('click')
+
+    getName(textInput.current.value);
 
   }
 
-  const eventStop = event => {
-    event.preventDefault();
-    console.log('click')
-  }
 
-  return <div>
-    <form onSubmit={(e) => eventStop(e)} >
-      <Select />
-      <Input type="text" placeholder="Enter your name" ref={inputValue} />
-      <button onClick={(e) => submithName(e)} >PLAY</button>
-    </form>
-  </div>
+  return (
+    <div>
+      <form onSubmit={(e) => { e.preventDefault(e) }} >
+        <Select />
+        <input type="text" placeholder="Enter your name" ref={textInput} />
+        <button onClick={(e) => submithName(e)} >PLAY</button>
+      </form>
+    </div>
+  )
 }
 
 const mapDispatchToProps = dispatch => {
@@ -40,4 +37,4 @@ const mapDispatchToProps = dispatch => {
 
 }
 
-export default connect(mapDispatchToProps)(FormControl);
+export default connect(null, mapDispatchToProps)(FormControl);

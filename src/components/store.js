@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
-import { DATA_FETCHING, SELECT, dataFetching } from '../actions/actions';
+import { DATA_FETCHING, SELECT, SET_PLAYER_NAME, dataFetching } from '../actions/actions';
 
 
 const initialState = {
@@ -21,11 +21,19 @@ const getGameMode = () => {
 }
 
 const reducer = (state = initialState, action) => {
+
   switch (action.type) {
+
     case DATA_FETCHING:
-      return Object.assign({}, state, { body: action.body })
+      return Object.assign({}, state, { body: action.body });
+
     case SELECT:
-      return Object.assign({}, state, { selected: Number(action.selected) })
+      return Object.assign({}, state, { selected: Number(action.selected) });
+
+    case SET_PLAYER_NAME:
+      console.log(action)
+      return Object.assign({}, state, { player: action.name });
+
     default:
       return state;
   }
