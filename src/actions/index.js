@@ -1,0 +1,1 @@
+export { setPlayerName } from './actions';

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Square = () => {
-  return <div></div>
+  return <div className="square" ></div>
 }
 
 export default Square;
