@@ -1,21 +1,22 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import uniqid from 'uniqid';
 
 import Square from './Square';
 
+const Field = ({ selected }) => {
 
-const Field = () => {
-  const squaresNumber = 5;
+  // const squaresNumber = selected*selected;
 
   const style = {
-    gridTemplateColumns: `repeat(${squaresNumber}, 50px)`,
-    gridTemplateRows: `repeat(${squaresNumber}, 50px)`,
+    gridTemplateColumns: `repeat(${selected}, 50px)`,
+    gridTemplateRows: `repeat(${selected}, 50px)`,
   }
 
-  const res = new Array(squaresNumber).fill(null).map(el => {
-    return <Square key={uniqid()}/>
+  const res = new Array(Math.pow(selected, 2)).fill(null).map(el => {
+    return <Square key={uniqid()} />
   });
-  console.log(style)
+
   return (
     <div className="field" style={style}>
       {res}
@@ -23,4 +24,12 @@ const Field = () => {
   )
 }
 
-export default Field;
+const mapStateToProps = state => {
+
+  return {
+    selected: state.selected
+  }
+
+}
+
+export default connect(mapStateToProps)(Field);

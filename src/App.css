@@ -36,13 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
-/* styling  */
-.field {
-  display: grid;
-}
-
-.App {
-  display: flex;
-  justify-content: center;
-}
