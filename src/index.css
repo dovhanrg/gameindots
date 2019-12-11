@@ -26,3 +26,11 @@ code {
 .square {
   border: 1px solid cadetblue;
 }
+
+.user {
+  background-color: palegreen;
+}
+
+.computer {
+  background-color: tomato;
+}

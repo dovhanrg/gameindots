@@ -1,1 +1,4 @@
-export { setPlayerName } from './actions';
+export {
+  setPlayerName,
+  setOccupiedSquare
+} from './actions';

@@ -13,11 +13,24 @@ const Select = ({ body, select }) => {
 
     const modeName = el[0].substr(0, 1).toUpperCase() + el[0].substr(1, el[0].lastIndexOf('M') - 1);
 
-    return <option key={uniqid()} value={el[1].field}>{`${modeName} Mode`}</option>
-  })
+    return (
+      <option
+        key={uniqid()}
+        attr-field={el[1].field}
+        attr-delay={el[1].delay}
+        value={el[1].field}
+      >
+        {`${modeName} Mode`}
+      </option>
+    )
+
+  });
 
   return (
-    <select onChange={ (e) => select(e)  } name="" id="">
+    <select onChange={(event) => {
+      console.log(event.currentTarget)
+      select(event.target.value)
+    }} name="" id="">
       {options}
     </select>
   )
@@ -32,8 +45,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    select: (e) => dispatch(isSelected(e))
+    select: selectValue => {
+      console.log(selectValue)
+      dispatch(isSelected(selectValue))
+    }
   };
- }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Select);
